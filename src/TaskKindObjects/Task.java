@@ -1,4 +1,8 @@
+package TaskKindObjects;
+
 import java.util.Objects;
+import Managers.Status;
+
 
 public class Task {
     public String name;
@@ -6,7 +10,7 @@ public class Task {
     private int id;
      private Status status;
 
-    Task(String name, String description, Status status){
+   public Task(String name, String description, Status status){
         this.name = name;
         this.description = description;
         this.status = status;
@@ -32,7 +36,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "TaskKindObjects.Task{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", id=" + id +
@@ -45,11 +49,11 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(name, task.name) && Objects.equals(description, task.description);
+        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description) && status == task.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description);
+        return Objects.hash(name, description, id, status);
     }
 }

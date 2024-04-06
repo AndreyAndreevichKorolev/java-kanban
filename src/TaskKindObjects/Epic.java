@@ -1,9 +1,12 @@
+package TaskKindObjects;
+
 import java.util.ArrayList;
+import Managers.Status;
 
 public class Epic extends Task {
  public ArrayList<Subtask> idOfSubtasks;
 
-  Epic(String name, String description){
+  public Epic(String name, String description){
     super(name, description, Status.NEW);
     idOfSubtasks = new ArrayList<>();
   }
@@ -11,7 +14,7 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "Epic{" +
+        return "TaskKindObjects.Epic{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", id=" + getId() +
