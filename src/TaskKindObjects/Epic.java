@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import Managers.Status;
 
 public class Epic extends Task {
- public ArrayList<Subtask> idOfSubtasks;
+ private ArrayList<Subtask> subtasksOfSpecificEpic;
 
   public Epic(String name, String description){
     super(name, description, Status.NEW);
-    idOfSubtasks = new ArrayList<>();
+    subtasksOfSpecificEpic = new ArrayList<>();
   }
 
+    public ArrayList<Subtask> getSubtasksOfSpecificEpic() {
+        return subtasksOfSpecificEpic;
+    }
+
+    public void setSubtasksOfSpecificEpic(ArrayList<Subtask> subtasksOfSpecificEpic) {
+        this.subtasksOfSpecificEpic = subtasksOfSpecificEpic;
+    }
 
     @Override
     public String toString() {
