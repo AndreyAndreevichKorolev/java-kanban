@@ -6,10 +6,11 @@ import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
     private static final int MAX_SIZE_OF_LAST_TASKS_LIST = 10;
-    private static List<Task> lastViewedTasks;
+    private  List<Task> lastViewedTasks;
 
     public InMemoryHistoryManager(){
         lastViewedTasks = new ArrayList<>();
+
     }
 
     @Override

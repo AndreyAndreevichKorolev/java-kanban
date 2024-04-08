@@ -13,11 +13,14 @@ public class InMemoryTaskManager implements TaskManager {
     HashMap<Integer,Task> tasks;
     HashMap<Integer, Epic> epics;
     HashMap<Integer, Subtask> subtasks;
+    protected final HistoryManager history;
 
     public InMemoryTaskManager(){
         tasks = new HashMap<>();
         epics = new HashMap<>();
         subtasks = new HashMap<>();
+        history = Managers.getDefaultHistory();
+
     }
 
 
@@ -47,7 +50,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Task receiveTask(int id){
-
+        history.add(tasks.get(id));
         return tasks.get(id);
     }
 
@@ -87,7 +90,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Epic receiveEpic(int id){
-
+        history.add(epics.get(id));
       return epics.get(id);
     }
 
@@ -192,7 +195,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Subtask receiveSubtask(int id){
-
+        history.add(subtasks.get(id));
         return subtasks.get(id);
     }
 
@@ -234,6 +237,11 @@ public class InMemoryTaskManager implements TaskManager {
     public ArrayList<Subtask> getSubtasksOfEpic(Epic epic){
         return epic.getSubtasksOfSpecificEpic();
         
+    }
+
+    @Override
+    public ArrayList<Task> getHistory(){
+        return history.getHistory();
     }
 
 
