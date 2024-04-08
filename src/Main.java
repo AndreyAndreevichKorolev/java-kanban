@@ -1,5 +1,5 @@
 import Managers.Status;
-import Managers.TaskManager;
+import Managers.InMemoryTaskManager;
 import TaskKindObjects.Epic;
 import TaskKindObjects.Subtask;
 import TaskKindObjects.Task;
@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Поехали!");
-        TaskManager manager = new TaskManager();
+        InMemoryTaskManager manager = new InMemoryTaskManager();
         Task task1 = new Task("name1", "description1", Status.NEW);
         Task task2 = new Task("name2", "description2", Status.IN_PROGRESS);
         manager.createNewTask(task1);
