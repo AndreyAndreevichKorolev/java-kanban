@@ -1,6 +1,6 @@
 package managers;
 
-import taskKindObjects.Task;
+import tasks.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
