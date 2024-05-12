@@ -1,7 +1,7 @@
-package TaskKindObjects;
+package taskKindObjects;
 
 import java.util.ArrayList;
-import Managers.Status;
+import managers.Status;
 
 public class Epic extends Task {
  private ArrayList<Subtask> subtasksOfSpecificEpic;

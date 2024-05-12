@@ -1,7 +1,7 @@
-package TaskKindObjects;
+package taskKindObjects;
 
 import java.util.Objects;
-import Managers.Status;
+import managers.Status;
 
 
 public class Task {

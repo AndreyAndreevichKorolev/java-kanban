@@ -1,13 +1,13 @@
-package Managers;
+package managers;
 
-import TaskKindObjects.Task;
+import taskKindObjects.Task;
 
 public class TasksNode {
     public TasksNode previous;
     public TasksNode next;
     public Task data;
 
-    TasksNode(Task data) пше{
+    TasksNode(Task data) {
         previous = null;
         next = null;
         this.data = data;

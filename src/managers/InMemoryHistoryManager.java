@@ -1,11 +1,10 @@
-package Managers;
+package managers;
 
-import TaskKindObjects.Task;
+import taskKindObjects.Task;
 
 import java.util.HashMap;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
     private TasksLinkedList lastViewedTasks;

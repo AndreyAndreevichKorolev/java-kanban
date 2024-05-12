@@ -1,12 +1,9 @@
-package TaskKindObjects;
+package taskKindObjects;
 
-import Managers.InMemoryHistoryManager;
-import Managers.InMemoryTaskManager;
-import Managers.Status;
+import managers.InMemoryTaskManager;
+import managers.Status;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TaskTest {
 

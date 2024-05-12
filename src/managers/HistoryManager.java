@@ -1,5 +1,5 @@
-package Managers;
-import TaskKindObjects.Task;
+package managers;
+import taskKindObjects.Task;
 import java.util.ArrayList;
 
 public interface HistoryManager {

@@ -1,6 +1,6 @@
-package TaskKindObjects;
+package taskKindObjects;
 
-import Managers.Status;
+import managers.Status;
 
 public class Subtask extends Task {
 

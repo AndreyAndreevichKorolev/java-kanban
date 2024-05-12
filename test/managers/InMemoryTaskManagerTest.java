@@ -1,8 +1,8 @@
-package Managers;
+package managers;
 
-import TaskKindObjects.Epic;
-import TaskKindObjects.Subtask;
-import TaskKindObjects.Task;
+import taskKindObjects.Epic;
+import taskKindObjects.Subtask;
+import taskKindObjects.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
