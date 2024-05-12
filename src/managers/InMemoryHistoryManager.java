@@ -60,50 +60,51 @@ public class InMemoryHistoryManager implements HistoryManager {
             nodeFinder.remove(id);
         }
     }
-}
-
-class TasksLinkedList {
-    private int size;
-    TasksNode head;
-    TasksNode tail;
 
 
-    TasksLinkedList() {
-        size = 0;
-        head = null;
-        tail = null;
-    }
+    class TasksLinkedList {
+        private int size;
+        TasksNode head;
+        TasksNode tail;
 
-    public void reduceSize() {
-        size--;
-    }
 
-    public int getSize() {
-        return size;
-    }
-
-    public void linkLast(TasksNode node) {
-        if (head == null) {
-            head = node;
-            tail = node;
-        } else {
-            TasksNode oldTail = tail;
-            tail = node;
-            oldTail.next = tail;
-            tail.previous = oldTail;
+        TasksLinkedList() {
+            size = 0;
+            head = null;
+            tail = null;
         }
-        size++;
-    }
 
-    public ArrayList<Task> getTasks() {
-        ArrayList<Task> history = new ArrayList<>();
-        TasksNode node = head;
-        for (int i = 1; i <= getSize(); i++) {
-            Task task = node.data;
-            history.add(task);
-            TasksNode nextNode = node.next;
-            node = nextNode;
+        public void reduceSize() {
+            size--;
         }
-        return history;
+
+        public int getSize() {
+            return size;
+        }
+
+        public void linkLast(TasksNode node) {
+            if (head == null) {
+                head = node;
+                tail = node;
+            } else {
+                TasksNode oldTail = tail;
+                tail = node;
+                oldTail.next = tail;
+                tail.previous = oldTail;
+            }
+            size++;
+        }
+
+        public ArrayList<Task> getTasks() {
+            ArrayList<Task> history = new ArrayList<>();
+            TasksNode node = head;
+            for (int i = 1; i <= getSize(); i++) {
+                Task task = node.data;
+                history.add(task);
+                TasksNode nextNode = node.next;
+                node = nextNode;
+            }
+            return history;
+        }
     }
 }
