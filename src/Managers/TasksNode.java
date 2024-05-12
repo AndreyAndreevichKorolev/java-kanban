@@ -7,7 +7,7 @@ public class TasksNode {
     public TasksNode next;
     public Task data;
 
-    TasksNode(Task data) {
+    TasksNode(Task data) пше{
         previous = null;
         next = null;
         this.data = data;
