@@ -1,4 +1,4 @@
-package TaskKindObjects;
+package task_Kind_Objects;
 
 import managers.InMemoryTaskManager;
 import org.junit.jupiter.api.Assertions;

@@ -1,11 +1,11 @@
 package managers;
 
-import TaskKindObjects.Epic;
-import TaskKindObjects.Subtask;
+import task_Kind_Objects.Epic;
+import task_Kind_Objects.Subtask;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import TaskKindObjects.Task;
+import task_Kind_Objects.Task;
 
 import java.util.ArrayList;
 
