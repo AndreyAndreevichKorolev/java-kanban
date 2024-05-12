@@ -1,4 +1,4 @@
-package taskKindObjects;
+package TaskKindObjects;
 
 import managers.InMemoryTaskManager;
 import managers.Status;

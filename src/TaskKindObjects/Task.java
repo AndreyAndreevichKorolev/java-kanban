@@ -1,4 +1,4 @@
-package taskKindObjects;
+package TaskKindObjects;
 
 import java.util.Objects;
 

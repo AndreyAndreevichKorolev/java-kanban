@@ -1,8 +1,8 @@
 package managers;
 
-import taskKindObjects.Epic;
-import taskKindObjects.Subtask;
-import taskKindObjects.Task;
+import TaskKindObjects.Epic;
+import TaskKindObjects.Subtask;
+import TaskKindObjects.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
