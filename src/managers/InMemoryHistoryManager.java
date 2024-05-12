@@ -1,6 +1,6 @@
 package managers;
 
-import task_Kind_Objects.Task;
+import taskKindObjects.Task;
 
 import java.util.HashMap;
 

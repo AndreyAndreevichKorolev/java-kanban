@@ -1,4 +1,4 @@
-package task_Kind_Objects;
+package taskKindObjects;
 
 import managers.Status;
 
