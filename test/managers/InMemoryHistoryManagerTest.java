@@ -9,7 +9,7 @@ import java.util.ArrayList;
 class InMemoryHistoryManagerTest {
 
     @Test
-    public void oldTaskVersionThatWasViewedShouldBeSavedInHistoryAfterAddingAnotherVersion(){
+    public void oldTaskVersionThatWasViewedShouldBeSavedInHistoryAfterAddingAnotherVersion() {
         InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
         Task task1 = new Task("Задача1", "Первая версия задачи 1", Status.NEW);
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
@@ -23,7 +23,7 @@ class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void IfWeHaveCheckedTheSameTaskMoreThenOneTimeThatTaskShouldBeDeletedFromOldPlaceAndAddedToTheEndOfList(){
+    public void IfWeHaveCheckedTheSameTaskMoreThenOneTimeThatTaskShouldBeDeletedFromOldPlaceAndAddedToTheEndOfList() {
         InMemoryHistoryManager history = new InMemoryHistoryManager();
         Task task1 = new Task("Задача 1", "Первая задача", Status.NEW);
         Task task2 = new Task("Задача 2", "Вторая задача", Status.NEW);
@@ -53,7 +53,6 @@ class InMemoryHistoryManagerTest {
         Assertions.assertNotEquals(listAfterRemoving, newList, "Списки одинаковые!");
         System.out.println(listAfterRemoving);
     }
-
 
 
 }

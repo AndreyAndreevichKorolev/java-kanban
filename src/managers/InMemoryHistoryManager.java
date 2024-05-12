@@ -17,11 +17,11 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     @Override
     public void add(Task task) {
-        if(!nodeFinder.containsKey(task.getId())){
+        if (!nodeFinder.containsKey(task.getId())) {
             TasksNode node = new TasksNode(task);
             nodeFinder.put(task.getId(), node);
             lastViewedTasks.linkLast(node);
-        } else{
+        } else {
             removeNode(nodeFinder.get(task.getId()));
             TasksNode node = new TasksNode(task);
             nodeFinder.put(task.getId(), node);
@@ -29,12 +29,12 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
     }
 
-    public void removeNode(TasksNode node){
-        if(lastViewedTasks.head == node){
+    public void removeNode(TasksNode node) {
+        if (lastViewedTasks.head == node) {
             TasksNode next = node.next;
             next.previous = null;
             lastViewedTasks.head = next;
-        } else if(lastViewedTasks.tail == node){
+        } else if (lastViewedTasks.tail == node) {
             TasksNode previous = node.previous;
             previous.next = null;
             lastViewedTasks.tail = previous;
@@ -53,8 +53,8 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     @Override
-    public void remove(int id){
-        if(nodeFinder.containsKey(id)){
+    public void remove(int id) {
+        if (nodeFinder.containsKey(id)) {
             TasksNode node = nodeFinder.get(id);
             removeNode(node);
             nodeFinder.remove(id);
@@ -82,8 +82,8 @@ class TasksLinkedList {
         return size;
     }
 
-    public void linkLast(TasksNode node){
-        if(head == null){
+    public void linkLast(TasksNode node) {
+        if (head == null) {
             head = node;
             tail = node;
         } else {
@@ -95,10 +95,10 @@ class TasksLinkedList {
         size++;
     }
 
-    public ArrayList<Task> getTasks(){
+    public ArrayList<Task> getTasks() {
         ArrayList<Task> history = new ArrayList<>();
         TasksNode node = head;
-        for(int i = 1; i <= getSize(); i++){
+        for (int i = 1; i <= getSize(); i++) {
             Task task = node.data;
             history.add(task);
             TasksNode nextNode = node.next;

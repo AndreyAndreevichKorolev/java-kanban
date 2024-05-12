@@ -42,7 +42,5 @@ public class Main {
         System.out.println(manager.getHistory());
 
 
-
-
     }
 }
