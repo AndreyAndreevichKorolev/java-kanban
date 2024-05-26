@@ -162,10 +162,10 @@ public class InMemoryTaskManager implements TaskManager {
         } else {
             Epic epic = epics.get(id);
             ArrayList<Subtask> subtasksOfEpic = epic.getSubtasksOfSpecificEpic();
-            ArrayList<Subtask> listForIteration = new ArrayList<>(subtasksOfEpic);
-            for (Subtask subtask : listForIteration) {
+            for (Subtask subtask : subtasksOfEpic) {
                 int idOfSubtask = subtask.getId();
-                deleteSubtask(idOfSubtask);
+                history.remove(idOfSubtask);
+                subtasks.remove(idOfSubtask);
             }
             history.remove(id);
             epics.remove(id);
@@ -224,9 +224,10 @@ public class InMemoryTaskManager implements TaskManager {
             Epic epic = subtask.getEpicOfSubtask();
             ArrayList<Subtask> subtasksOfEpic = epic.getSubtasksOfSpecificEpic();
             Subtask previousSubtask = null;
-            for (Subtask subtask1 : subtasksOfEpic) {
-                if (subtask1.getId() == subtask.getId()) {
-                    previousSubtask = subtask1;
+            for (Subtask subtaskOfEpic : subtasksOfEpic) {
+                if (subtaskOfEpic.getId() == subtask.getId()) {
+                    previousSubtask = subtaskOfEpic;
+                    break;
                 }
             }
             subtasksOfEpic.remove(previousSubtask);
