@@ -1,12 +1,12 @@
-package TaskKindObjects;
+package tasks;
 
-import Managers.Status;
+import managers.Status;
 
 public class Subtask extends Task {
 
- private Epic epicOfSubtask;
+    private Epic epicOfSubtask;
 
-    public Subtask(String name, String description, Epic epicOfSubtask){
+    public Subtask(String name, String description, Epic epicOfSubtask) {
         super(name, description, Status.NEW);
         this.epicOfSubtask = epicOfSubtask;
     }

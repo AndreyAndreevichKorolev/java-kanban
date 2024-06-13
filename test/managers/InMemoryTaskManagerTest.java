@@ -1,8 +1,8 @@
-package Managers;
+package managers;
 
-import TaskKindObjects.Epic;
-import TaskKindObjects.Subtask;
-import TaskKindObjects.Task;
+import tasks.Epic;
+import tasks.Subtask;
+import tasks.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,20 +10,20 @@ class InMemoryTaskManagerTest {
     InMemoryTaskManager taskManager = new InMemoryTaskManager();
 
     @Test
-    public void shouldFindTaskById(){
+    public void shouldFindTaskById() {
         Task task = new Task("Таск1", "Первая задача", Status.NEW);
         Epic epic = new Epic("Эпик1", "Вторая задача");
         Subtask subtask = new Subtask("Сабтаск", "Третья задача", epic);
         taskManager.createNewTask(task);
         taskManager.createNewEpic(epic);
         taskManager.createNewSubtask(subtask);
-        Assertions.assertEquals(task,taskManager.receiveTask(task.getId()), "менеджер не нашел задачу по id");
+        Assertions.assertEquals(task, taskManager.receiveTask(task.getId()), "менеджер не нашел задачу по id");
         Assertions.assertEquals(epic, taskManager.receiveEpic(epic.getId()), "менеджер не нашел задачу по id");
         Assertions.assertEquals(subtask, taskManager.receiveSubtask(subtask.getId()), "менеджер не нашел задачу по id");
     }
 
     @Test
-    public void twoTasksOneWithHandCreatedIdAndOneWithManagerCreatedIdShouldntConfront(){
+    public void twoTasksOneWithHandCreatedIdAndOneWithManagerCreatedIdShouldntConfront() {
         Task handTask = new Task("Задача вручную", "Задача с id, сгенерированным вручную", Status.NEW);
         Task managerTask = new Task("Задача автоматом", "Задача с id, сгенерированным менеджером", Status.NEW);
         taskManager.createNewTask(managerTask);
@@ -33,7 +33,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void taskMustntChangeAfterAddingToManager(){
+    public void taskMustntChangeAfterAddingToManager() {
         Task task1 = new Task("Задaча", "Задача", Status.NEW);
         Task task2 = new Task("Задaча", "Задача", Status.NEW);
         taskManager.createNewTask(task1);

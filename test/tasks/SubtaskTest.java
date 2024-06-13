@@ -1,17 +1,15 @@
-package TaskKindObjects;
+package tasks;
 
-import Managers.InMemoryTaskManager;
+import managers.InMemoryTaskManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SubtaskTest {
 
     @Test
-    public void ShouldBeTheSameSubtaskTwoSubtasksWithTheSameId(){
-        Epic epic = new Epic("Эпик","Эпик для проверки сабтасков");
-        Subtask subtask1 = new Subtask("Сабтаск1","Первый сабтаск", epic);
+    public void ShouldBeTheSameSubtaskTwoSubtasksWithTheSameId() {
+        Epic epic = new Epic("Эпик", "Эпик для проверки сабтасков");
+        Subtask subtask1 = new Subtask("Сабтаск1", "Первый сабтаск", epic);
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
         taskManager.createNewSubtask(subtask1);
         Subtask subtask2 = new Subtask("Сабтаск2", "Второй сабтаск", epic);

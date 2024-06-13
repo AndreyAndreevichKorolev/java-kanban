@@ -1,15 +1,16 @@
-package TaskKindObjects;
+package tasks;
 
 import java.util.ArrayList;
-import Managers.Status;
+
+import managers.Status;
 
 public class Epic extends Task {
- private ArrayList<Subtask> subtasksOfSpecificEpic;
+    private ArrayList<Subtask> subtasksOfSpecificEpic;
 
-  public Epic(String name, String description){
-    super(name, description, Status.NEW);
-    subtasksOfSpecificEpic = new ArrayList<>();
-  }
+    public Epic(String name, String description) {
+        super(name, description, Status.NEW);
+        subtasksOfSpecificEpic = new ArrayList<>();
+    }
 
     public ArrayList<Subtask> getSubtasksOfSpecificEpic() {
         return subtasksOfSpecificEpic;

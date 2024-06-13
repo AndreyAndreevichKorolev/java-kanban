@@ -1,16 +1,17 @@
-package TaskKindObjects;
+package tasks;
 
 import java.util.Objects;
-import Managers.Status;
+
+import managers.Status;
 
 
 public class Task {
     public String name;
     public String description;
     private int id;
-     private Status status;
+    private Status status;
 
-   public Task(String name, String description, Status status){
+    public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
@@ -22,15 +23,15 @@ public class Task {
         this.status = status;
     }
 
-    public Status getStatus(){
+    public Status getStatus() {
         return status;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
