@@ -10,9 +10,9 @@ import java.util.HashMap;
 public class InMemoryTaskManager implements TaskManager {
 
     private int tracker = 1;
-    HashMap<Integer, Task> tasks;
-    HashMap<Integer, Epic> epics;
-    HashMap<Integer, Subtask> subtasks;
+    private HashMap<Integer, Task> tasks;
+    private HashMap<Integer, Epic> epics;
+    private HashMap<Integer, Subtask> subtasks;
     protected final HistoryManager history;
 
     public InMemoryTaskManager() {
@@ -262,5 +262,27 @@ public class InMemoryTaskManager implements TaskManager {
         return history.getHistory();
     }
 
+    public HashMap<Integer, Task> getTasks() {
+        return tasks;
+    }
 
+    public void setTasks(HashMap<Integer, Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public HashMap<Integer, Epic> getEpics() {
+        return epics;
+    }
+
+    public void setEpics(HashMap<Integer, Epic> epics) {
+        this.epics = epics;
+    }
+
+    public HashMap<Integer, Subtask> getSubtasks() {
+        return subtasks;
+    }
+
+    public void setSubtasks(HashMap<Integer, Subtask> subtasks) {
+        this.subtasks = subtasks;
+    }
 }
