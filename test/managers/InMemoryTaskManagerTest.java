@@ -29,7 +29,7 @@ class InMemoryTaskManagerTest {
         taskManager.createNewTask(managerTask);
         handTask.setId(managerTask.getId());
         taskManager.createNewTask(handTask);
-        Assertions.assertEquals(2, taskManager.tasks.size(), "В списоке нет 2-х задач!");
+        Assertions.assertEquals(2, taskManager.getTasks().size(), "В списоке нет 2-х задач!");
     }
 
     @Test

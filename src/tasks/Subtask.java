@@ -9,6 +9,7 @@ public class Subtask extends Task {
     public Subtask(String name, String description, Epic epicOfSubtask) {
         super(name, description, Status.NEW);
         this.epicOfSubtask = epicOfSubtask;
+        setType(Types.SUBTASK);
     }
 
     public Epic getEpicOfSubtask() {

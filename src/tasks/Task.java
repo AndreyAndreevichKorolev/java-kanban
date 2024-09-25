@@ -10,13 +10,22 @@ public class Task {
     public String description;
     private int id;
     private Status status;
+    private Types type;
 
     public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
+        type = Types.TASK;
 
+    }
 
+    public Types getType() {
+        return type;
+    }
+
+    public void setType(Types type) {
+        this.type = type;
     }
 
     public void setStatus(Status status) {
