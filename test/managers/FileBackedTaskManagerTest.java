@@ -24,7 +24,7 @@ class FileBackedTaskManagerTest {
 
     @BeforeEach
     public void makeTestReady() throws IOException {
-        pathToFile = new File("/Users/andreykorolev/Desktop/Test.CSV");
+        pathToFile = new File("Test.CSV");
 
         pathToFile.createNewFile();
 
