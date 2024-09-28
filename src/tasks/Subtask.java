@@ -2,6 +2,8 @@ package tasks;
 
 import managers.Status;
 
+import java.time.LocalDateTime;
+
 public class Subtask extends Task {
 
     private Epic epicOfSubtask;
@@ -12,17 +14,13 @@ public class Subtask extends Task {
         setType(Types.SUBTASK);
     }
 
+
     public Epic getEpicOfSubtask() {
         return epicOfSubtask;
     }
 
     @Override
     public String toString() {
-        return "TaskKindObjects.Subtask{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", id=" + getId() +
-                ", status=" + getStatus() +
-                '}';
+        return "TaskKindObjects.Subtask{" + "name='" + name + '\'' + ", description='" + description + '\'' + ", id=" + getId() + ", status=" + getStatus() + '}';
     }
 }

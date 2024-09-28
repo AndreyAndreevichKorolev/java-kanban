@@ -1,6 +1,9 @@
 package tasks;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 import managers.Status;
 
@@ -11,12 +14,42 @@ public class Task {
     private int id;
     private Status status;
     private Types type;
+    private Duration duration;
+    private LocalDateTime startTime;
+
 
     public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
         type = Types.TASK;
+        this.duration = Duration.ofMinutes(0);
+
+    }
+
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        if (startTime != null) {
+            return startTime.plus(duration);
+        } else {
+            return null;
+        }
 
     }
 
@@ -46,12 +79,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "TaskKindObjects.Task{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", id=" + id +
-                ", status=" + status +
-                '}';
+        return "TaskKindObjects.Task{" + "name='" + name + '\'' + ", description='" + description + '\'' + ", id=" + id + ", status=" + status + '}';
     }
 
     @Override
@@ -66,4 +94,6 @@ public class Task {
     public int hashCode() {
         return Objects.hash(name, description, id, status);
     }
+
+
 }

@@ -30,7 +30,10 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     public void removeNode(TasksNode node) {
-        if (lastViewedTasks.head == node) {
+        if (lastViewedTasks.size == 1) {
+            lastViewedTasks.head = null;
+            lastViewedTasks.tail = null;
+        } else if (lastViewedTasks.head == node) {
             TasksNode next = node.next;
             next.previous = null;
             lastViewedTasks.head = next;
