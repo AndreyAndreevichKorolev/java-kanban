@@ -1,8 +1,8 @@
 package managers;
 
-import tasks.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import tasks.Task;
 
 import java.util.ArrayList;
 

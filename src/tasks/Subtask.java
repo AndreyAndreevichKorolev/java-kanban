@@ -2,8 +2,6 @@ package tasks;
 
 import managers.Status;
 
-import java.time.LocalDateTime;
-
 public class Subtask extends Task {
 
     private Epic epicOfSubtask;
