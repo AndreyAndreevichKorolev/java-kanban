@@ -322,7 +322,7 @@ public class InMemoryTaskManager implements TaskManager {
             putTaskToTree(subtask); //удалили старую версию подзадачи из дерева и добавили новую
             Epic epic = subtask.getEpicOfSubtask();
             ArrayList<Subtask> subtasksOfEpic = epic.getSubtasksOfSpecificEpic();
-            ArrayList<Subtask> filteredList = (ArrayList<Subtask>) subtasksOfEpic.stream().filter(subtask1 -> subtask1.getId() != subtask.getId()).collect(Collectors.toList());
+            ArrayList<Subtask> filteredList = (ArrayList<Subtask>) subtasksOfEpic.stream().filter(subtaskOfStream -> subtaskOfStream.getId() != subtask.getId()).collect(Collectors.toList());
 
 
             epic.setSubtasksOfSpecificEpic(filteredList);
