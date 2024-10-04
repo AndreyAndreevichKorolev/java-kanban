@@ -1,12 +1,14 @@
 package managers;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 class InMemoryTaskManagerTest {
+
+
     InMemoryTaskManager taskManager = new InMemoryTaskManager();
 
     @Test
@@ -29,7 +31,7 @@ class InMemoryTaskManagerTest {
         taskManager.createNewTask(managerTask);
         handTask.setId(managerTask.getId());
         taskManager.createNewTask(handTask);
-        Assertions.assertEquals(2, taskManager.tasks.size(), "В списоке нет 2-х задач!");
+        Assertions.assertEquals(2, taskManager.getTasks().size(), "В списоке нет 2-х задач!");
     }
 
     @Test

@@ -9,7 +9,9 @@ public class Subtask extends Task {
     public Subtask(String name, String description, Epic epicOfSubtask) {
         super(name, description, Status.NEW);
         this.epicOfSubtask = epicOfSubtask;
+        setType(Types.SUBTASK);
     }
+
 
     public Epic getEpicOfSubtask() {
         return epicOfSubtask;
@@ -17,11 +19,6 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return "TaskKindObjects.Subtask{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", id=" + getId() +
-                ", status=" + getStatus() +
-                '}';
+        return "TaskKindObjects.Subtask{" + "name='" + name + '\'' + ", description='" + description + '\'' + ", id=" + getId() + ", status=" + getStatus() + '}';
     }
 }
