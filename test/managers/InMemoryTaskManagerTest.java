@@ -15,9 +15,9 @@ class InMemoryTaskManagerTest {
     public void shouldFindTaskById() {
         Task task = new Task("Таск1", "Первая задача", Status.NEW);
         Epic epic = new Epic("Эпик1", "Вторая задача");
+        taskManager.createNewEpic(epic);
         Subtask subtask = new Subtask("Сабтаск", "Третья задача", epic.getId());
         taskManager.createNewTask(task);
-        taskManager.createNewEpic(epic);
         taskManager.createNewSubtask(subtask);
         Assertions.assertEquals(task, taskManager.receiveTask(task.getId()), "менеджер не нашел задачу по id");
         Assertions.assertEquals(epic, taskManager.receiveEpic(epic.getId()), "менеджер не нашел задачу по id");

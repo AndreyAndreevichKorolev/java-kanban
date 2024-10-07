@@ -37,8 +37,8 @@ class EpicTest {
         Subtask subtask = new Subtask("Подзадача", "Подзадача для проверки", epic.getId());
         manager.createNewSubtask(subtask);
         // создали подзадачу и добавили в менеджер - теперь в списке подзадач эпика хранится эта подзадача
-        ArrayList<Subtask> forCheck = new ArrayList<>();
-        forCheck.add(subtask);
+        ArrayList<Integer> forCheck = new ArrayList<>();
+        forCheck.add(subtask.getId());
         // создали такой же список для проверки
         Assertions.assertEquals(epic.getSubtasksOfSpecificEpic(), forCheck, "Списки не одинаковые!");
         // проверили, что список подзадач эпика хранит данную подзадачу
@@ -116,6 +116,7 @@ class EpicTest {
     @Test
     public void shouldCountTheRightDuration() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
+        manager.createNewEpic(epic);
         Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask1.setDuration(Duration.ofMinutes(10));
         Subtask subtask2 = new Subtask("подзадача1", "проверка", epic.getId());
@@ -123,7 +124,6 @@ class EpicTest {
         Subtask subtask3 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask3.setDuration(Duration.ofMinutes(23));
         int rightDurationAfterAdd3Sub = 10 + 15 + 23;
-        manager.createNewEpic(epic);
         manager.createNewSubtask(subtask1);
         manager.createNewSubtask(subtask2);
         manager.createNewSubtask(subtask3);
@@ -143,6 +143,7 @@ class EpicTest {
     @Test
     public void shouldCountTheRightStartTimeAndEndTime() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
+        manager.createNewEpic(epic);
         Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask1.setDuration(Duration.ofMinutes(10));
         subtask1.setStartTime(LocalDateTime.of(2023, 9, 27, 19, 0));
@@ -153,7 +154,6 @@ class EpicTest {
         subtask3.setDuration(Duration.ofMinutes(23));
         subtask3.setStartTime(LocalDateTime.of(2023, 11, 27, 19, 0));
         int rightDurationAfterAdd3Sub = 10 + 15 + 23;
-        manager.createNewEpic(epic);
         manager.createNewSubtask(subtask1);
         manager.createNewSubtask(subtask2);
         manager.createNewSubtask(subtask3);

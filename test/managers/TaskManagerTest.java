@@ -76,22 +76,29 @@ class TaskManagerTest {
 
     @Test
     public void TestsForSubtasks() {
-        manager.createNewSubtask(subtask1);
-        manager.createNewSubtask(subtask2);
-        manager.createNewSubtask(subtask3);
-        manager.createNewSubtask(subtask4);
-        Assertions.assertEquals(subtask1, manager.receiveSubtask(subtask1.getId()), "Задача не получена");
-        manager.deleteSubtask(subtask1.getId());
-        Assertions.assertEquals(3, manager.getAllSubtasks().size(), "задача не удалилась");
-        manager.createNewSubtask(subtask1);
-        Subtask receivedSubtask = manager.receiveSubtask(subtask1.getId());
-        Assertions.assertEquals(subtask1, receivedSubtask, "задачу не удалось получить");
-        Subtask updatedSubtask = new Subtask("задача", "задача для проверки", subtask1.getEpicOfSubtask());
-        updatedSubtask.setId(subtask1.getId());
-        manager.updateSubtask(updatedSubtask);
-        Assertions.assertNotEquals(subtask1, manager.receiveSubtask(subtask1.getId()), "задача одна и та же - замена не произошла");
-        manager.deleteAllSubtasks();
-        Assertions.assertTrue(manager.getAllTasks().isEmpty(), "Список задач не пустой - все задачи не удалились");
+        Epic epic1 = new Epic("epic", "epic for testing");
+        InMemoryTaskManager manager1 = new InMemoryTaskManager();
+        manager1.createNewEpic(epic1);
+        Subtask subtask5 = new Subtask("subtask5", "subtask5", epic1.getId());
+        Subtask subtask6 = new Subtask("subtask6", "subtask6", epic1.getId());
+        Subtask subtask7 = new Subtask("subtask7", "subtask7", epic1.getId());
+        Subtask subtask8 = new Subtask("subtask8", "subtask8", epic1.getId());
+        manager1.createNewSubtask(subtask5);
+        manager1.createNewSubtask(subtask6);
+        manager1.createNewSubtask(subtask7);
+        manager1.createNewSubtask(subtask8);
+        Assertions.assertEquals(subtask5, manager1.receiveSubtask(subtask5.getId()), "Задача не получена");
+        manager1.deleteSubtask(subtask5.getId());
+        Assertions.assertEquals(3, manager1.getAllSubtasks().size(), "задача не удалилась");
+        manager1.createNewSubtask(subtask5);
+        Subtask receivedSubtask = manager1.receiveSubtask(subtask5.getId());
+        Assertions.assertEquals(subtask5, receivedSubtask, "задачу не удалось получить");
+        Subtask updatedSubtask = new Subtask("задача", "задача для проверки", subtask5.getEpicOfSubtask());
+        updatedSubtask.setId(subtask5.getId());
+        manager1.updateSubtask(updatedSubtask);
+        Assertions.assertNotEquals(subtask5, manager1.receiveSubtask(subtask5.getId()), "задача одна и та же - замена не произошла");
+        manager1.deleteAllSubtasks();
+        Assertions.assertTrue(manager1.getAllTasks().isEmpty(), "Список задач не пустой - все задачи не удалились");
 
     }
 

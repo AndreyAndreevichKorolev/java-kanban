@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 
 public class HttpTaskServer {
     private static final int PORT = 9090;
-    static final Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().registerTypeAdapter(LocalDateTime.class,
-            new LocalDateTimeAdapter()).registerTypeAdapter(Duration.class, new DurationAdapter()).create();
+    static final Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).registerTypeAdapter(Duration.class, new DurationAdapter()).create();
     static TaskManager manager;
     private static HttpServer server = null;
 

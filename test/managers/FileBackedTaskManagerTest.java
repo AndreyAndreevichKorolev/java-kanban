@@ -33,6 +33,7 @@ class FileBackedTaskManagerTest {
         task.setDuration(Duration.ofMinutes(10));
         task.setStartTime(LocalDateTime.of(2000, 10, 17, 12, 0));
         epic = new Epic("Эпик!", "Единственный эпик");
+        manager.createNewEpic(epic);
         subtask1 = new Subtask("подзадача 1", "подзадача эпика первая", epic.getId());
         subtask1.setStartTime(LocalDateTime.of(2000, 10, 17, 13, 0));
         subtask1.setDuration(Duration.ofMinutes(15));
@@ -41,7 +42,6 @@ class FileBackedTaskManagerTest {
         subtask2.setDuration(Duration.ofMinutes(20));
         subtask3 = new Subtask("подзадача 3", "подзадача эпика третья", epic.getId());
         manager.createNewTask(task);
-        manager.createNewEpic(epic);
         manager.createNewSubtask(subtask1);
         manager.createNewSubtask(subtask2);
         manager.createNewSubtask(subtask3);

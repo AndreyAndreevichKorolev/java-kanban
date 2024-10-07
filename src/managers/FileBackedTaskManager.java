@@ -78,10 +78,12 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             }
         }
         for (Epic epic : manager.getEpics().values()) {   // добавил заполнение списка сабтасков эпика
-            ArrayList<Subtask> subtasksOfEpic = manager.getSubtasksOfEpic(epic);
+
             ArrayList<Integer> idOfSubtasksOfEpic = new ArrayList<>();
-            for (Subtask subtask : subtasksOfEpic) {
-                idOfSubtasksOfEpic.add(subtask.getId());
+            for (Subtask subtask : manager.getSubtasks().values()) {
+                if (epic.getId() == subtask.getEpicOfSubtask()) {
+                    idOfSubtasksOfEpic.add(subtask.getId());
+                }
             }
             epic.setSubtasksOfSpecificEpic(idOfSubtasksOfEpic);
         }
