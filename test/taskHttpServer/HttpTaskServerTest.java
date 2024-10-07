@@ -1,4 +1,4 @@
-package TaskHttpServer;
+package taskHttpServer;
 
 import managers.Managers;
 import managers.Status;

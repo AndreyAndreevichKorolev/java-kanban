@@ -1,22 +1,20 @@
-package TaskHttpServer;
+package taskHttpServer;
 
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import managers.InMemoryTaskManager;
 import managers.TaskManager;
 import tasks.Task;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
-
-public class PriorityHandler extends BaseHttpHandler implements HttpHandler {
-    InMemoryTaskManager manager;
+public class HistoryHandler extends BaseHttpHandler implements HttpHandler {
+    TaskManager manager;
     Gson gson;
 
-    public PriorityHandler(TaskManager manager, Gson gson) {
-        this.manager = (InMemoryTaskManager) manager;
+    public HistoryHandler(TaskManager manager, Gson gson) {
+        this.manager = manager;
         this.gson = gson;
     }
 
@@ -36,9 +34,9 @@ public class PriorityHandler extends BaseHttpHandler implements HttpHandler {
     }
 
     private void forGET(HttpExchange exchange, String[] partsOfPath) throws IOException {
-        if (partsOfPath.length == 2 && partsOfPath[1].equals("prioritized")) {
-            List<Task> priorityOfManager = manager.getPrioritizedTasks();
-            String responseBody = gson.toJson(priorityOfManager);
+        if (partsOfPath.length == 2 && partsOfPath[1].equals("history")) {
+            ArrayList<Task> historyOfManager = manager.getHistory();
+            String responseBody = gson.toJson(historyOfManager);
             sendText200(exchange, responseBody);
 
         } else {

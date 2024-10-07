@@ -1,4 +1,4 @@
-package TaskHttpServer;
+package taskHttpServer;
 
 import com.sun.net.httpserver.HttpExchange;
 

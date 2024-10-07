@@ -1,4 +1,4 @@
-package TaskHttpServer;
+package taskHttpServer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
