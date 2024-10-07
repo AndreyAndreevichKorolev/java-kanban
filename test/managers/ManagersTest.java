@@ -1,10 +1,9 @@
 package managers;
 
-import tasks.Epic;
-import tasks.Subtask;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import tasks.Epic;
+import tasks.Subtask;
 import tasks.Task;
 
 import java.util.ArrayList;
@@ -18,10 +17,10 @@ class ManagersTest {
         Task task1 = new Task("Первый таск", "Это должна быть первая в простмотренных задача", Status.NEW);
         Task task2 = new Task("Второй таск", "Это должна быть вторая в просмотренных задача", Status.IN_PROGRESS);
         Epic epic = new Epic("Эпик", "Это должна быть третья в просмотренных задача");
-        Subtask subtask = new Subtask("Сабтаск", "Это должна быть четвертая в просмотренных задача", epic);
+        taskManager.createNewEpic(epic);
+        Subtask subtask = new Subtask("Сабтаск", "Это должна быть четвертая в просмотренных задача", epic.getId());
         taskManager.createNewTask(task1);
         taskManager.createNewTask(task2);
-        taskManager.createNewEpic(epic);
         taskManager.createNewSubtask(subtask);
         Assertions.assertNotEquals(0, task1.getId(), "менеджер на задал id задаче!");
         HistoryManager historyManager = manager.getDefaultHistory();

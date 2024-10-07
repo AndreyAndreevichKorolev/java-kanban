@@ -2,9 +2,8 @@ package managers;
 
 import tasks.Task;
 
-import java.util.HashMap;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class InMemoryHistoryManager implements HistoryManager {
     private TasksLinkedList lastViewedTasks;
@@ -30,7 +29,10 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     public void removeNode(TasksNode node) {
-        if (lastViewedTasks.head == node) {
+        if (lastViewedTasks.size == 1) {
+            lastViewedTasks.head = null;
+            lastViewedTasks.tail = null;
+        } else if (lastViewedTasks.head == node) {
             TasksNode next = node.next;
             next.previous = null;
             lastViewedTasks.head = next;
@@ -94,6 +96,7 @@ public class InMemoryHistoryManager implements HistoryManager {
             }
             size++;
         }
+
 
         public ArrayList<Task> getTasks() {
             ArrayList<Task> history = new ArrayList<>();

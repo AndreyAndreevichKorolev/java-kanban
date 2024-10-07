@@ -1,8 +1,8 @@
 package managers;
 
-import tasks.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import tasks.Task;
 
 import java.util.ArrayList;
 
@@ -18,8 +18,7 @@ class InMemoryHistoryManagerTest {
         historyManager.add(task1);
         task2.setId(task1.getId());
         taskManager.updateTask(task2);
-        Assertions.assertNotEquals(taskManager.receiveTask(task2.getId()), task1, "Задача в истории изменила " +
-                "свои данные после обновления");
+        Assertions.assertNotEquals(taskManager.receiveTask(task2.getId()), task1, "Задача в истории изменила " + "свои данные после обновления");
     }
 
     @Test

@@ -4,24 +4,21 @@ import managers.Status;
 
 public class Subtask extends Task {
 
-    private Epic epicOfSubtask;
+    private Integer epicOfSubtask;
 
-    public Subtask(String name, String description, Epic epicOfSubtask) {
+    public Subtask(String name, String description, Integer epicOfSubtask) {
         super(name, description, Status.NEW);
         this.epicOfSubtask = epicOfSubtask;
+        setType(Types.SUBTASK);
     }
 
-    public Epic getEpicOfSubtask() {
+
+    public Integer getEpicOfSubtask() {
         return epicOfSubtask;
     }
 
     @Override
     public String toString() {
-        return "TaskKindObjects.Subtask{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", id=" + getId() +
-                ", status=" + getStatus() +
-                '}';
+        return "TaskKindObjects.Subtask{" + "name='" + name + '\'' + ", description='" + description + '\'' + ", id=" + getId() + ", status=" + getStatus() + '}';
     }
 }

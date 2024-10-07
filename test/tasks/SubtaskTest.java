@@ -8,11 +8,12 @@ class SubtaskTest {
 
     @Test
     public void ShouldBeTheSameSubtaskTwoSubtasksWithTheSameId() {
-        Epic epic = new Epic("Эпик", "Эпик для проверки сабтасков");
-        Subtask subtask1 = new Subtask("Сабтаск1", "Первый сабтаск", epic);
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
+        Epic epic = new Epic("Эпик", "Эпик для проверки сабтасков");
+        taskManager.createNewEpic(epic);
+        Subtask subtask1 = new Subtask("Сабтаск1", "Первый сабтаск", epic.getId());
         taskManager.createNewSubtask(subtask1);
-        Subtask subtask2 = new Subtask("Сабтаск2", "Второй сабтаск", epic);
+        Subtask subtask2 = new Subtask("Сабтаск2", "Второй сабтаск", epic.getId());
         subtask2.setId(subtask1.getId());
         Assertions.assertEquals(subtask1.getId(), subtask2.getId(), "id сабтасков не равны!");
     }

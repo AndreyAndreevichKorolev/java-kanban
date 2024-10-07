@@ -1,21 +1,23 @@
 package managers;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 class InMemoryTaskManagerTest {
+
+
     InMemoryTaskManager taskManager = new InMemoryTaskManager();
 
     @Test
     public void shouldFindTaskById() {
         Task task = new Task("Таск1", "Первая задача", Status.NEW);
         Epic epic = new Epic("Эпик1", "Вторая задача");
-        Subtask subtask = new Subtask("Сабтаск", "Третья задача", epic);
-        taskManager.createNewTask(task);
         taskManager.createNewEpic(epic);
+        Subtask subtask = new Subtask("Сабтаск", "Третья задача", epic.getId());
+        taskManager.createNewTask(task);
         taskManager.createNewSubtask(subtask);
         Assertions.assertEquals(task, taskManager.receiveTask(task.getId()), "менеджер не нашел задачу по id");
         Assertions.assertEquals(epic, taskManager.receiveEpic(epic.getId()), "менеджер не нашел задачу по id");
@@ -29,7 +31,7 @@ class InMemoryTaskManagerTest {
         taskManager.createNewTask(managerTask);
         handTask.setId(managerTask.getId());
         taskManager.createNewTask(handTask);
-        Assertions.assertEquals(2, taskManager.tasks.size(), "В списоке нет 2-х задач!");
+        Assertions.assertEquals(2, taskManager.getTasks().size(), "В списоке нет 2-х задач!");
     }
 
     @Test
