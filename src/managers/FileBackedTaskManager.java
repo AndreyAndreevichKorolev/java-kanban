@@ -32,7 +32,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 writer.write("\n" + toString(epic) + "," + epic.getEndTime());
             }
             for (Subtask subtask : getSubtasks().values()) {
-                writer.write("\n" + toString(subtask) + "," + "" + "," + subtask.getEpicOfSubtask().getId());
+                writer.write("\n" + toString(subtask) + "," + "" + "," + subtask.getEpicOfSubtask());
             }
 
 
@@ -78,13 +78,12 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             }
         }
         for (Epic epic : manager.getEpics().values()) {   // добавил заполнение списка сабтасков эпика
-            ArrayList<Subtask> subtasksOfEpic = new ArrayList<>();
-            for (Subtask subtask : manager.getSubtasks().values()) {
-                if (subtask.getEpicOfSubtask() == epic) {
-                    subtasksOfEpic.add(subtask);
-                }
+            ArrayList<Subtask> subtasksOfEpic = manager.getSubtasksOfEpic(epic);
+            ArrayList<Integer> idOfSubtasksOfEpic = new ArrayList<>();
+            for (Subtask subtask : subtasksOfEpic) {
+                idOfSubtasksOfEpic.add(subtask.getId());
             }
-            epic.setSubtasksOfSpecificEpic(subtasksOfEpic);
+            epic.setSubtasksOfSpecificEpic(idOfSubtasksOfEpic);
         }
         return manager;
     }
@@ -149,7 +148,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 taskFromString = epicFromString;
                 break;
             case "SUBTASK":
-                Epic epicOfSubtask = getEpics().get(Integer.parseInt(attributes[8]));
+                Integer epicOfSubtask = getEpics().get(Integer.parseInt(attributes[8])).getId();
                 taskFromString = new Subtask(name, description, epicOfSubtask);
                 taskFromString.setId(id);
                 taskFromString.setStatus(status);
@@ -161,9 +160,10 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     @Override
-    public void createNewTask(Task task) {
-        super.createNewTask(task);
+    public boolean createNewTask(Task task) {
+        boolean isCreated = super.createNewTask(task);
         save();
+        return isCreated;
     }
 
     @Override
@@ -173,15 +173,17 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     @Override
-    public void updateTask(Task task) {
-        super.updateTask(task);
+    public int updateTask(Task task) {
+        int statusOfUpdating = super.updateTask(task);
         save();
+        return statusOfUpdating;
     }
 
     @Override
-    public void deleteTask(int id) {
-        super.deleteTask(id);
+    public boolean deleteTask(int id) {
+        boolean isDeleted = super.deleteTask(id);
         save();
+        return isDeleted;
     }
 
     @Override
@@ -197,21 +199,24 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     @Override
-    public void updateEpic(Epic epic) {
-        super.updateEpic(epic);
+    public boolean updateEpic(Epic epic) {
+        boolean isUpdated = super.updateEpic(epic);
         save();
+        return isUpdated;
     }
 
     @Override
-    public void deleteEpic(int id) {
-        super.deleteEpic(id);
+    public boolean deleteEpic(int id) {
+        boolean isDeleted = super.deleteEpic(id);
         save();
+        return isDeleted;
     }
 
     @Override
-    public void createNewSubtask(Subtask subtask) {
-        super.createNewSubtask(subtask);
+    public boolean createNewSubtask(Subtask subtask) {
+        boolean isCreated = super.createNewSubtask(subtask);
         save();
+        return isCreated;
     }
 
     @Override
@@ -221,14 +226,15 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     @Override
-    public void updateSubtask(Subtask subtask) {
-        super.updateSubtask(subtask);
+    public int updateSubtask(Subtask subtask) {
+        int statusOfUpdating = super.updateSubtask(subtask);
         save();
+        return statusOfUpdating;
     }
 
     @Override
-    public void deleteSubtask(int id) {
-        super.deleteSubtask(id);
-
+    public boolean deleteSubtask(int id) {
+        boolean isDeleted = super.deleteSubtask(id);
+        return isDeleted;
     }
 }

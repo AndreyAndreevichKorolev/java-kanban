@@ -34,7 +34,7 @@ class EpicTest {
         InMemoryTaskManager manager = new InMemoryTaskManager();
         manager.createNewEpic(epic);
         // создали эпик
-        Subtask subtask = new Subtask("Подзадача", "Подзадача для проверки", epic);
+        Subtask subtask = new Subtask("Подзадача", "Подзадача для проверки", epic.getId());
         manager.createNewSubtask(subtask);
         // создали подзадачу и добавили в менеджер - теперь в списке подзадач эпика хранится эта подзадача
         ArrayList<Subtask> forCheck = new ArrayList<>();
@@ -52,9 +52,9 @@ class EpicTest {
     public void shouldBeWithStatusNewIfHaveOnlyNewSubtasks() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
         manager.createNewEpic(epic);
-        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic);
-        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic);
-        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
+        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic.getId());
+        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic.getId());
         manager.createNewSubtask(subtask1);
         manager.createNewSubtask(subtask2);
         manager.createNewSubtask(subtask3);
@@ -66,11 +66,11 @@ class EpicTest {
     public void shouldBeWithStatusDoneIfHaveOnlyDoneSubtasks() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
         manager.createNewEpic(epic);
-        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask1.setStatus(Status.DONE);
-        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask2.setStatus(Status.DONE);
-        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask3.setStatus(Status.DONE);
         manager.createNewSubtask(subtask1);
         manager.createNewSubtask(subtask2);
@@ -83,11 +83,11 @@ class EpicTest {
     public void shouldBeWithStatusInProgressIfHaveSubtasksWithDoneAndNewStatus() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
         manager.createNewEpic(epic);
-        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask1.setStatus(Status.DONE);
-        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask2.setStatus(Status.NEW);
-        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask3.setStatus(Status.DONE);
         manager.createNewSubtask(subtask1);
         manager.createNewSubtask(subtask2);
@@ -100,11 +100,11 @@ class EpicTest {
     public void shouldBeWithStatusInProgressIfHaveOnlyInProgressSubtasks() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
         manager.createNewEpic(epic);
-        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask1.setStatus(Status.IN_PROGRESS);
-        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask2.setStatus(Status.IN_PROGRESS);
-        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask3.setStatus(Status.IN_PROGRESS);
         manager.createNewSubtask(subtask1);
         manager.createNewSubtask(subtask2);
@@ -116,11 +116,11 @@ class EpicTest {
     @Test
     public void shouldCountTheRightDuration() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
-        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask1.setDuration(Duration.ofMinutes(10));
-        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask2.setDuration(Duration.ofMinutes(15));
-        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask3.setDuration(Duration.ofMinutes(23));
         int rightDurationAfterAdd3Sub = 10 + 15 + 23;
         manager.createNewEpic(epic);
@@ -131,7 +131,7 @@ class EpicTest {
         int rightDurationAfterRemovingOneSub = 10 + 23;
         manager.deleteSubtask(subtask2.getId());
         Assertions.assertEquals(rightDurationAfterRemovingOneSub, epic.getDuration().toMinutes(), "после удаления подзадачи неправильная продолжительность эпика");
-        Subtask subtask4 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask4 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask4.setId(subtask3.getId());
         subtask4.setDuration(Duration.ofMinutes(12));
         int rightDurationAfterUpdatingOneSub = 10 + 12;
@@ -143,13 +143,13 @@ class EpicTest {
     @Test
     public void shouldCountTheRightStartTimeAndEndTime() {
         InMemoryTaskManager manager = new InMemoryTaskManager();
-        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask1 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask1.setDuration(Duration.ofMinutes(10));
         subtask1.setStartTime(LocalDateTime.of(2023, 9, 27, 19, 0));
-        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask2 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask2.setStartTime(LocalDateTime.of(2023, 10, 27, 19, 0));
         subtask2.setDuration(Duration.ofMinutes(15));
-        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic);
+        Subtask subtask3 = new Subtask("подзадача1", "проверка", epic.getId());
         subtask3.setDuration(Duration.ofMinutes(23));
         subtask3.setStartTime(LocalDateTime.of(2023, 11, 27, 19, 0));
         int rightDurationAfterAdd3Sub = 10 + 15 + 23;

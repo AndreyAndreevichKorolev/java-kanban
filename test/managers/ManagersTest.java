@@ -17,7 +17,7 @@ class ManagersTest {
         Task task1 = new Task("Первый таск", "Это должна быть первая в простмотренных задача", Status.NEW);
         Task task2 = new Task("Второй таск", "Это должна быть вторая в просмотренных задача", Status.IN_PROGRESS);
         Epic epic = new Epic("Эпик", "Это должна быть третья в просмотренных задача");
-        Subtask subtask = new Subtask("Сабтаск", "Это должна быть четвертая в просмотренных задача", epic);
+        Subtask subtask = new Subtask("Сабтаск", "Это должна быть четвертая в просмотренных задача", epic.getId());
         taskManager.createNewTask(task1);
         taskManager.createNewTask(task2);
         taskManager.createNewEpic(epic);

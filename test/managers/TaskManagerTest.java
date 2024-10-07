@@ -27,13 +27,13 @@ class TaskManagerTest {
         task = new Task("task", "task for test", Status.DONE);
         task.setDuration(Duration.ofMinutes(10));
         task.setStartTime(LocalDateTime.of(2024, 1, 1, 0, 0));
-        subtask1 = new Subtask("subtask1", "subtask for test", epic);
+        subtask1 = new Subtask("subtask1", "subtask for test", epic.getId());
         subtask1.setDuration(Duration.ofMinutes(10));
-        subtask2 = new Subtask("subtask2", "subtask for test", epic);
-        subtask3 = new Subtask("subtask3", "subtask for test", epic);
+        subtask2 = new Subtask("subtask2", "subtask for test", epic.getId());
+        subtask3 = new Subtask("subtask3", "subtask for test", epic.getId());
         subtask3.setDuration(Duration.ofMinutes(10));
         subtask3.setStartTime(LocalDateTime.of(2025, 1, 1, 0, 0));
-        subtask4 = new Subtask("subtask4", "subtask for test", epic);
+        subtask4 = new Subtask("subtask4", "subtask for test", epic.getId());
         subtask4.setDuration(Duration.ofMinutes(10));
         subtask4.setStartTime(LocalDateTime.of(2025, 1, 1, 5, 0));
     }

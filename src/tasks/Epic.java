@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Epic extends Task {
-    private ArrayList<Subtask> subtasksOfSpecificEpic;
+    private ArrayList<Integer> subtasksOfSpecificEpic;
     private LocalDateTime endTime;
 
     public Epic(String name, String description) {
@@ -18,11 +18,11 @@ public class Epic extends Task {
         setType(Types.EPIC);
     }
 
-    public void findStartTime() {
+    public void findStartTime(ArrayList<Subtask> subtasksOfEpic) {
         if (subtasksOfSpecificEpic.isEmpty()) {
             setStartTime(null);
         } else {
-            List<Subtask> filteredListOfSubtasksByStart = subtasksOfSpecificEpic.stream().filter(subtask -> subtask.getStartTime() != null).collect(Collectors.toList());
+            List<Subtask> filteredListOfSubtasksByStart = subtasksOfEpic.stream().filter(subtask -> subtask.getStartTime() != null).collect(Collectors.toList());
             if (filteredListOfSubtasksByStart.isEmpty()) {
                 setStartTime(null);
             } else {
@@ -39,10 +39,10 @@ public class Epic extends Task {
         }
     }
 
-    public void findDuration() {
+    public void findDuration(ArrayList<Subtask> subtasksOfEpic) {
         long minutes = 0;
         if (!subtasksOfSpecificEpic.isEmpty()) {
-            for (Subtask subtask : subtasksOfSpecificEpic) {
+            for (Subtask subtask : subtasksOfEpic) {
                 minutes += subtask.getDuration().toMinutes();
             }
 
@@ -57,11 +57,11 @@ public class Epic extends Task {
         return endTime;
     }
 
-    public void findEndTime() {
+    public void findEndTime(ArrayList<Subtask> subtasksOfEpic) {
         if (subtasksOfSpecificEpic.isEmpty()) {
             setEndTime(null);
         } else {
-            List<Subtask> filteredListOfSubtasksByStart = subtasksOfSpecificEpic.stream().filter(subtask -> subtask.getStartTime() != null).collect(Collectors.toList());
+            List<Subtask> filteredListOfSubtasksByStart = subtasksOfEpic.stream().filter(subtask -> subtask.getStartTime() != null).collect(Collectors.toList());
             if (filteredListOfSubtasksByStart.isEmpty()) {
                 setEndTime(null);
             } else {
@@ -84,11 +84,11 @@ public class Epic extends Task {
         this.endTime = endTime;
     }
 
-    public ArrayList<Subtask> getSubtasksOfSpecificEpic() {
+    public ArrayList<Integer> getSubtasksOfSpecificEpic() {
         return subtasksOfSpecificEpic;
     }
 
-    public void setSubtasksOfSpecificEpic(ArrayList<Subtask> subtasksOfSpecificEpic) {
+    public void setSubtasksOfSpecificEpic(ArrayList<Integer> subtasksOfSpecificEpic) {
         this.subtasksOfSpecificEpic = subtasksOfSpecificEpic;
     }
 

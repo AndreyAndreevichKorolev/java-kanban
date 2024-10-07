@@ -24,7 +24,7 @@ class FileBackedTaskManagerTest {
 
     @BeforeEach
     public void makeTestReady() throws IOException {
-        pathToFile = new File("Test.CSV");
+        pathToFile = new File("TasksFile.CSV");
 
         pathToFile.createNewFile();
 
@@ -33,13 +33,13 @@ class FileBackedTaskManagerTest {
         task.setDuration(Duration.ofMinutes(10));
         task.setStartTime(LocalDateTime.of(2000, 10, 17, 12, 0));
         epic = new Epic("Эпик!", "Единственный эпик");
-        subtask1 = new Subtask("подзадача 1", "подзадача эпика первая", epic);
+        subtask1 = new Subtask("подзадача 1", "подзадача эпика первая", epic.getId());
         subtask1.setStartTime(LocalDateTime.of(2000, 10, 17, 13, 0));
         subtask1.setDuration(Duration.ofMinutes(15));
-        subtask2 = new Subtask("подзадача 2", "подзадача эпика вторая", epic);
+        subtask2 = new Subtask("подзадача 2", "подзадача эпика вторая", epic.getId());
         subtask2.setStartTime(LocalDateTime.of(2000, 10, 17, 14, 0));
         subtask2.setDuration(Duration.ofMinutes(20));
-        subtask3 = new Subtask("подзадача 3", "подзадача эпика третья", epic);
+        subtask3 = new Subtask("подзадача 3", "подзадача эпика третья", epic.getId());
         manager.createNewTask(task);
         manager.createNewEpic(epic);
         manager.createNewSubtask(subtask1);

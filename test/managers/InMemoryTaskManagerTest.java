@@ -15,7 +15,7 @@ class InMemoryTaskManagerTest {
     public void shouldFindTaskById() {
         Task task = new Task("Таск1", "Первая задача", Status.NEW);
         Epic epic = new Epic("Эпик1", "Вторая задача");
-        Subtask subtask = new Subtask("Сабтаск", "Третья задача", epic);
+        Subtask subtask = new Subtask("Сабтаск", "Третья задача", epic.getId());
         taskManager.createNewTask(task);
         taskManager.createNewEpic(epic);
         taskManager.createNewSubtask(subtask);
